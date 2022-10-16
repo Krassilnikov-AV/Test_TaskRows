@@ -29,13 +29,8 @@ public class ReadAndWriteFileImpl implements ReadAndWriteFile {
 		return arrayLine;
 	}
 
-
 	@Override
 	public void writeUsingFiles(List<String> data, String outputPath) throws IOException {
-		try {
 			Files.write(Paths.get(outputPath), data);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

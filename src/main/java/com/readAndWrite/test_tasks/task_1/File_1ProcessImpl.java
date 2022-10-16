@@ -104,6 +104,7 @@ public class File_1ProcessImpl implements FileProcess {
 			resalt.add(notEl + " : ?");
 			System.out.println(notEl + " : ?");
 		}
+		System.out.println("************");
 		return resalt;
 	}
 }

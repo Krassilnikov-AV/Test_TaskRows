@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.regex.*;
 
 /**
- * Класс File_1ProcessImpl
+ * Класс File_3ProcessImpl
  * осуществляет обработку данных с полученного файла для чтения при помощи метода splittingArrayAndProcessing(String path)
  * после получения данных и формирования их в массиве, прочитанные данные получают согасно заданию определённые числа
  * n и m. Полувченные числа соответсвуют количествуют заполненным строкам в искомом файле, а так же являются
@@ -30,14 +30,11 @@ public class File_3ProcessImpl implements FileProcess {
 		for (String arr : array) {
 			str = arr;
 			if (!str.isEmpty()) {
-				if (n == 0 & m == 0) {
-					int tempN = 0;
-					try {
-						tempN = Integer.parseInt(str);
-					} catch (NumberFormatException ignored) {
-					}
+				if (n == 0 & m == 0 & !isAlpha(str)) {
+					int tempN;
+					tempN = Integer.parseInt(str);
 					n = tempN;
-				} else if (n != 0 & m == 0) {
+				} else if (n != 0 & m == 0 & !isAlpha(str)) {
 					int tempM = 0;
 					try {
 						tempM = Integer.parseInt(str);
@@ -56,6 +53,10 @@ public class File_3ProcessImpl implements FileProcess {
 		}
 		String outputPath = "src/main/resources/write/output3.txt";
 		readFileImpl.writeUsingFiles(purposeRows(), outputPath);
+	}
+
+	private boolean isAlpha(String str) {
+		return str.matches("[a-zA-Z]+");
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public class File_3ProcessImpl implements FileProcess {
 			for (String aM : arrM_element) {
 				if (!t.contains(aM)) {
 					resaltArray.add(aM + " : ?");
-					System.out.println(aM + " : ?");
+					System.out.println(aM + " : ?" + "\n***********");
 				} else if (t.contains(aM)) {
 					resaltArray.add(t);
 				}

@@ -5,9 +5,6 @@ import com.readAndWrite.test_tasks.*;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Класс File_1ProcessImpl
- */
 public class File_2ProcessImpl implements FileProcess {
 	private ReadAndWriteFileImpl readFileImpl = new ReadAndWriteFileImpl();
 	//		длина первого и второго массивов
@@ -19,13 +16,16 @@ public class File_2ProcessImpl implements FileProcess {
 	private List<String> resaltArray = new ArrayList<>();
 	private String strNel, strMel;
 
+	private boolean isAlpha(String str) {
+		return str.matches("[a-zA-Z]+");
+	}
 	@Override
 	public void splittingArrayAndProcessing(String path)  throws IOException {
 		List<String> array = readFileImpl.readFile(path);
 		for (String arr : array) {
 			if (arr.isEmpty()) {
 			} else {
-				if (n != 0 & m == 0) {
+				if (n != 0 & m == 0 & !isAlpha(arr)) {
 					int tempM = 0;
 					try {
 						tempM = Integer.parseInt(arr);
@@ -63,7 +63,7 @@ public class File_2ProcessImpl implements FileProcess {
 			}
 			resaltArray.add(strNel + " : " + strMel);
 		}
-		System.out.println(strNel + " : " + strMel);
+		System.out.println(strNel + " : " + strMel+"\n ****************");
 		return resaltArray;
 	}
 }
